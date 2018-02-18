@@ -14,8 +14,8 @@ import 'rxjs/add/observable/forkJoin';
 export class SlavesComponent {
   @Input() id: string;
   slave: any = {};
-  private successAlert: boolean = false;
-  private successAlertMessage: string = '';
+  successAlert: boolean = false;
+  successAlertMessage: string = '';
 
   constructor(public router: Router, private route: ActivatedRoute, private http: HttpClient, private brainServiceApi: BrainServiceApi) {
     console.log('ngOnInit called');
@@ -110,7 +110,7 @@ export class SlavesComponent {
   }
 
 
-  private goToSlavesoverview() {
+  goToSlavesoverview() {
     this.router.navigate(['/slavesoverview']);
   }
 

@@ -10,7 +10,7 @@ export class LoginComponent {
 
   }
 
-  private login() {
+  login() {
     this.router.navigate(['/slaves']);
   }
 }
