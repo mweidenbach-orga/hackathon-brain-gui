@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 import 'rxjs/add/operator/map';
 import {BrainServiceApi} from "../../services/brainService/api/BrainServiceApi";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 @Component({
   selector: 'slavesoverview',
   templateUrl: 'slavesoverview.component.html'
@@ -11,7 +11,13 @@ import {Router} from "@angular/router";
 export class SlavesoverviewComponent {
   slaves: any = [];
 
-  constructor(public router: Router, private http: HttpClient, private brainServiceApi: BrainServiceApi) {
+  @Input() gatewayid: string;
+
+  constructor(public router: Router, private route: ActivatedRoute, private http: HttpClient, private brainServiceApi: BrainServiceApi) {
+    this.route.params.subscribe(params => {
+      this.gatewayid = params['gatewayid']; // (+) converts string 'id' to a number
+      // In a real app: dispatch action to load the details here.
+    });
     this.getData();
   }
 

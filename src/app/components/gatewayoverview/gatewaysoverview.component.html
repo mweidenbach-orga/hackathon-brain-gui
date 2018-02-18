@@ -3,14 +3,14 @@
     <h3>Your slaves</h3>
   </div>
   <div class="col-md-12">
-    <ul *ngFor="let slave of slaves">
+    <ul *ngFor="let gateway of gateways">
       <div class="col-md-4">
         <div class="col-md-12">
-          <h3>{{slave.description}}</h3>
+          <label>{{gateway.description}}</label>
         </div>
         <div class="col-md-12">
-          <img src='{{slave.imageUrl}}' class="img-thumbnail"
-               (click)="goToSlave(slave.id)">
+          <img src='https://i.imgur.com/5iHrwfE.png' class="img-thumbnail"
+               (click)="goToSlaveoverview(gateway.id)">
         </div>
       </div>
     </ul>

@@ -10,6 +10,7 @@ import {LoginComponent} from "./components/login/login.component";
 import {routing} from "./app.routes";
 import {SlavesoverviewComponent} from "./components/slavesoverview/slavesoverview.component";
 import {FormsModule} from "@angular/forms";
+import {GatewaysoverviewComponent} from "./components/gatewayoverview/gatewaysoverview.component";
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {FormsModule} from "@angular/forms";
     SlavesComponent,
     LoginComponent,
     SlavesoverviewComponent,
+    GatewaysoverviewComponent,
     KeysPipe
   ],
   imports: [
