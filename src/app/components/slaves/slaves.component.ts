@@ -55,6 +55,17 @@ export class SlavesComponent {
     });
   }
 
+  updateRequestModel(slaveId: String, parameter: any) {
+    this.onSuccessAlert('Request sent.');
+    this.brainServiceApi.request(slaveId, parameter.name).subscribe((request) => {
+      console.log(request);
+      parameter.value = request['value'];
+    }, (errData) => {
+
+    }, () => {
+    });
+  }
+
   request(slaveId: String, parameterName: String): any {
     this.onSuccessAlert('Request sent.');
     let data: String;
@@ -67,6 +78,7 @@ export class SlavesComponent {
       return data;
     });
   }
+
 
   send(slaveId: String, parameterName: String, type: String, value: String): void {
     this.onSuccessAlert('The value of parameter ' + parameterName + ' was set to ' + value + '.');

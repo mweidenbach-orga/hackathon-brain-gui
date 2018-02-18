@@ -7,9 +7,6 @@
 </div>
 
 <div class="btn-group" role="group" style="margin-bottom: 10px">
-  <a href>This is a link</a>
-
-  <a href="">Brain</a>
   <button type="submit" class="btn btn-success" (click)="goToSlavesoverview()">Back to slaves overview</button>
 </div>
 
@@ -19,7 +16,7 @@
   </div>
   <div class="col-md-12 list-group-item">
 
-    <div class="col-md-3" >
+    <div class="col-md-3">
 
       <div class="col-md-12" style="margin-top: 20px">
         <img src='{{slave.imageUrl}}' class="img-thumbnail">
@@ -45,24 +42,31 @@
         <div *ngFor="let requestable of slave.requestable">
 
           <div class="row col-md-12">
-            <div class="col-md-3">
+
+            <div class="col-md-3 list-group-item" style="background-color: #e7e7e7">
               <label>{{requestable.name}}</label>
+              <div style="color:gray;margin-left: 5px">
+                <label>{{requestable.description}}</label>
+              </div>
             </div>
-            <div class="col-md-6">
+
+            <div class="col-md-5">
               <span *ngIf="requestable.type === 'integer'" class="text-primary">
-                <label>{{requestable.value}}</label>
+                <input type="number" readonly class="form-control" value="{{requestable.value}}"/>
               </span>
 
               <span *ngIf="requestable.type === 'string'" class="text-primary">
-                <label>{{requestable.value}}</label>
+                <input type="number" readonly class="form-control" value="{{requestable.value}}"/>
               </span>
 
               <span *ngIf="requestable.type === 'boolean'" class="text-primary">
                 <label>{{requestable.value}}</label>
+                <input type="number" readonly class="form-control" value="{{requestable.value}}"/>
+
               </span>
             </div>
             <div class="col-md-3">
-              <button type="submit" class="btn btn-success" (click)="request(slave.id, requestable.name)">Get data
+              <button type="submit" class="btn btn-success" (click)="updateRequestModel(slave.id, requestable)">Get data
               </button>
             </div>
           </div>
@@ -77,31 +81,35 @@
 
           <div class="row col-md-12">
 
-            <div class="col-md-3">
+            <div class="col-md-3 list-group-item" style="background-color: #e7e7e7">
               <label>{{sendable.name}}</label>
+              <div style="color:gray;margin-left: 5px">
+                <label>{{sendable.description}}</label>
+              </div>
             </div>
 
-            <div class="col-md-6">
-
+            <div class="col-md-5">
               <span *ngIf="sendable.type === 'integer'" class="text-primary">
-                <div class="col-md-12">
                   <input type="number" class="form-control" name="send-{{in}}" [(ngModel)]="sendable.value"/>
-                </div>
               </span>
 
               <span *ngIf="sendable.type === 'string'" class="text-primary">
-                <div class="col-md-12">
                   <input type="text" class="form-control" name="send-{{in}}" [(ngModel)]="sendable.value"/>
-                </div>
               </span>
 
               <span *ngIf="sendable.type === 'boolean'" class="text-primary">
-                <div class="col-md-12">
-                </div>
+
+              <button type="submit" class="btn btn-success"
+                      (click)="send(slave.id, sendable.name,sendable.type, 'true')">On
+              </button>
+
+              <button type="submit" class="btn btn-success"
+                      (click)="send(slave.id, sendable.name,sendable.type, 'false')">Off
+              </button>
               </span>
             </div>
             <div class="col-md-3">
-              <button type="submit" class="btn btn-success"
+              <button type="submit" class="btn btn-success"  [hidden]="sendable.type === 'boolean'"
                       (click)="send(slave.id, sendable.name,sendable.type, sendable.value)">Send data
               </button>
             </div>

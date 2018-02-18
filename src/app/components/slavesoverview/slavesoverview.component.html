@@ -6,13 +6,11 @@
     <ul *ngFor="let slave of slaves">
       <div class="col-md-4 row">
         <div class="col-md-12">
-          <div class="col-md-12">
-            <label>{{slave.description}}</label>
-          </div>
-          <div class="col-md-12">
-            <img src='{{slave.imageUrl}}' class="img-thumbnail"
-                 (click)="goToSlave(slave.id)">
-          </div>
+          <label>{{slave.description}}</label>
+        </div>
+        <div class="col-md-12">
+          <img src='{{slave.imageUrl}}' class="img-thumbnail"
+               (click)="goToSlave(slave.id)">
         </div>
       </div>
     </ul>
