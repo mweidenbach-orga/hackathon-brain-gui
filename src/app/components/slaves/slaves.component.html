@@ -1,0 +1,114 @@
+<div class="col-md-12">
+  <div class="col-md-12 alerts">
+    <div class="alert alert-success" [hidden]="!successAlert">
+      <strong>Success!</strong> {{successAlertMessage}}
+    </div>
+  </div>
+</div>
+
+<div class="btn-group" role="group" style="margin-bottom: 10px">
+  <a href>This is a link</a>
+
+  <a href="">Brain</a>
+  <button type="submit" class="btn btn-success" (click)="goToSlavesoverview()">Back to slaves overview</button>
+</div>
+
+<div class="panel panel-primary">
+  <div class="col-md-12 panel-heading">
+    <h3>{{slave.description}}</h3>
+  </div>
+  <div class="col-md-12 list-group-item">
+
+    <div class="col-md-3" >
+
+      <div class="col-md-12" style="margin-top: 20px">
+        <img src='{{slave.imageUrl}}' class="img-thumbnail"
+             (click)="goToSlave(slave.id)">
+      </div>
+      <div class="col-md-12">
+
+        <div class="col-md-2">
+          <label>ID: </label>
+        </div>
+
+        <div class="col-md-10">
+          <label>{{slave.id}}</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-9">
+
+      <div class="col-md-12">
+        <h2>Monitoring</h2>
+      </div>
+      <div class="col-md-12 list-group-item" style="background-color: #e7e7e7">
+        <div *ngFor="let requestable of slave.requestable">
+
+          <div class="row col-md-12">
+            <div class="col-md-3">
+              <label>{{requestable.name}}</label>
+            </div>
+            <div class="col-md-6">
+              <span *ngIf="requestable.type === 'integer'" class="text-primary">
+                <label>{{requestable.value}}</label>
+              </span>
+
+              <span *ngIf="requestable.type === 'string'" class="text-primary">
+                <label>{{requestable.value}}</label>
+              </span>
+
+              <span *ngIf="requestable.type === 'boolean'" class="text-primary">
+                <label>{{requestable.value}}</label>
+              </span>
+            </div>
+            <div class="col-md-3">
+              <button type="submit" class="btn btn-success" (click)="request(slave.id, requestable.name)">Get data
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <h2>Controlling</h2>
+      </div>
+      <div class="col-md-12 list-group-item" style="background-color: #e7e7e7">
+        <div *ngFor="let sendable of slave.sendable, let in = index">
+
+          <div class="row col-md-12">
+
+            <div class="col-md-3">
+              <label>{{sendable.name}}</label>
+            </div>
+
+            <div class="col-md-6">
+
+              <span *ngIf="sendable.type === 'integer'" class="text-primary">
+                <div class="col-md-12">
+                  <input type="number" class="form-control" name="send-{{in}}" [(ngModel)]="sendable.value"/>
+                </div>
+              </span>
+
+              <span *ngIf="sendable.type === 'string'" class="text-primary">
+                <div class="col-md-12">
+                  <input type="text" class="form-control" name="send-{{in}}" [(ngModel)]="sendable.value"/>
+                </div>
+              </span>
+
+              <span *ngIf="sendable.type === 'boolean'" class="text-primary">
+                <div class="col-md-12">
+                </div>
+              </span>
+            </div>
+            <div class="col-md-3">
+              <button type="submit" class="btn btn-success"
+                      (click)="send(slave.id, sendable.name,sendable.type, sendable.value)">Send data
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
