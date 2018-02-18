@@ -56,16 +56,14 @@
               </span>
 
               <span *ngIf="requestable.type === 'string'" class="text-primary">
-                <input type="number" readonly class="form-control" value="{{requestable.value}}"/>
+                <input type="text" readonly class="form-control" value="{{requestable.value}}"/>
               </span>
 
               <span *ngIf="requestable.type === 'boolean'" class="text-primary">
-                <label>{{requestable.value}}</label>
-                <input type="number" readonly class="form-control" value="{{requestable.value}}"/>
-
+                <input type="text" readonly class="form-control" value="{{requestable.value}}"/>
               </span>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3" >
               <button type="submit" class="btn btn-success" (click)="updateRequestModel(slave.id, requestable)">Get data
               </button>
             </div>
@@ -108,8 +106,8 @@
               </button>
               </span>
             </div>
-            <div class="col-md-3">
-              <button type="submit" class="btn btn-success"  [hidden]="sendable.type === 'boolean'"
+            <div class="col-md-3" [hidden]="sendable.type === 'boolean'">
+              <button type="submit" class="btn btn-success"
                       (click)="send(slave.id, sendable.name,sendable.type, sendable.value)">Send data
               </button>
             </div>
