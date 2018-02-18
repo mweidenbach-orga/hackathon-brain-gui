@@ -1,15 +1,18 @@
+<div class="row" style="padding-left: 20px;padding-bottom: 10px">
+  <a [routerLink]="['/gatewaysoverview']"> Gateways </a>
+</div>
 <div class="panel panel-primary">
-  <div class="col-md-12 panel-heading">
-    <h3>Your slaves</h3>
+  <div class="col-md-12 panel-heading" style="padding-top: 0px">
+    <h3>Your gateways</h3>
   </div>
   <div class="col-md-12">
     <ul *ngFor="let gateway of gateways">
       <div class="col-md-4">
         <div class="col-md-12">
-          <label>{{gateway.description}}</label>
+          <h3>{{gateway.description}}</h3>
         </div>
         <div class="col-md-12">
-          <img src='https://i.imgur.com/5iHrwfE.png' class="img-thumbnail"
+          <img src='{{gateway.imageUrl}}' class="img-thumbnail"
                (click)="goToSlaveoverview(gateway.id)">
         </div>
       </div>

@@ -1,5 +1,10 @@
+<div class="row" style="padding-left: 20px;padding-bottom: 10px">
+  <a [routerLink]="['/gatewaysoverview']"> Gateways </a>
+  <a [routerLink]="['/slavesoverview/',{gatewayid:gatewayid}]">&#8594; Slaves </a>
+</div>
+
 <div class="panel panel-primary">
-  <div class="col-md-12 panel-heading">
+  <div class="col-md-12 panel-heading" style="padding-top: 0px">
     <h3>Your slaves</h3>
   </div>
   <div class="col-md-12">

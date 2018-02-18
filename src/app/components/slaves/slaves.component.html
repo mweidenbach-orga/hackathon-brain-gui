@@ -6,12 +6,14 @@
   </div>
 </div>
 
-<div class="btn-group" role="group" style="margin-bottom: 10px">
-  <button type="submit" class="btn btn-success" (click)="goToSlavesoverview()">Back to slaves overview</button>
+<div class="row" style="padding-left: 20px;padding-bottom: 10px">
+  <a [routerLink]="['/gatewaysoverview']"> Gateways </a>
+  <a [routerLink]="['/slavesoverview/',{gatewayid:gatewayid}]">&#8594; Slaves </a>
+  <a [routerLink]="['/slaves/',{id:slave.id}]">&#8594; {{slave.description}} </a>
 </div>
 
 <div class="panel panel-primary">
-  <div class="col-md-12 panel-heading">
+  <div class="col-md-12 panel-heading" style="padding-top: 0px">
     <h3>{{slave.description}}</h3>
   </div>
   <div class="col-md-12 list-group-item">
@@ -20,16 +22,6 @@
 
       <div class="col-md-12" style="margin-top: 20px">
         <img src='{{slave.imageUrl}}' class="img-thumbnail">
-      </div>
-      <div class="col-md-12">
-
-        <div class="col-md-2">
-          <label>ID: </label>
-        </div>
-
-        <div class="col-md-10">
-          <label>{{slave.id}}</label>
-        </div>
       </div>
     </div>
 

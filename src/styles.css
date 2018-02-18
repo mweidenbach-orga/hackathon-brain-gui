@@ -3,3 +3,7 @@
   right: 20px;
   z-index: 3000;
 }
+
+body {
+  background-color: #cccccc;
+}

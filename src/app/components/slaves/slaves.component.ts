@@ -120,10 +120,4 @@ export class SlavesComponent {
       }
     }
   }
-
-
-  goToSlavesoverview() {
-    this.router.navigate(['/slavesoverview']);
-  }
-
 }
