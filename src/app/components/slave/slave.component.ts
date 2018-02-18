@@ -8,11 +8,13 @@ import {Observable} from "rxjs/Observable";
 import 'rxjs/add/observable/forkJoin';
 
 @Component({
-  selector: 'slaves',
-  templateUrl: 'slaves.component.html'
+  selector: 'slave',
+  templateUrl: 'slave.component.html'
 })
-export class SlavesComponent {
-  @Input() id: string;
+export class SlaveComponent {
+  @Input() gatewayid: string;
+  @Input() slaveid: string;
+
   slave: any = {};
   successAlert: boolean = false;
   successAlertMessage: string = '';
@@ -20,10 +22,10 @@ export class SlavesComponent {
   constructor(public router: Router, private route: ActivatedRoute, private http: HttpClient, private brainServiceApi: BrainServiceApi) {
     console.log('ngOnInit called');
     this.route.params.subscribe(params => {
-      this.id = params['id']; // (+) converts string 'id' to a number
+      this.slaveid = params['slaveid']; // (+) converts string 'id' to a number
+      this.gatewayid = params['gatewayid']; // (+) converts string 'id' to a number
       // In a real app: dispatch action to load the details here.
     });
-    console.log(this.id);
     this.getData();
   }
 
@@ -41,7 +43,7 @@ export class SlavesComponent {
   getData(): void {
     const data2 = this.brainServiceApi.getStatus().subscribe((data3) => {
       for (const slave of data3['slaves']) {
-        if (slave.id === this.id) {
+        if (slave.id === this.slaveid) {
           this.slave = slave;
           console.log(this.slave);
         }

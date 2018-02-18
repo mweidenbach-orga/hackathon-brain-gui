@@ -5,10 +5,10 @@ import 'rxjs/add/operator/map';
 import {BrainServiceApi} from "../../services/brainService/api/BrainServiceApi";
 import {Router} from "@angular/router";
 @Component({
-  selector: 'gatewaysoverview',
-  templateUrl: 'gatewaysoverview.component.html'
+  selector: 'gateways',
+  templateUrl: 'gateways.component.html'
 })
-export class GatewaysoverviewComponent {
+export class GatewaysComponent {
   gateways: any = [];
 
   constructor(public router: Router, private http: HttpClient, private brainServiceApi: BrainServiceApi) {
@@ -37,6 +37,6 @@ export class GatewaysoverviewComponent {
   }
 
   goToSlaveoverview(gatewayId: String) {
-    this.router.navigateByUrl('/slavesoverview/' + gatewayId);
+    this.router.navigateByUrl('/gateways/' + gatewayId + '/slaves');
   }
 }

@@ -15,6 +15,6 @@ export class AppComponent implements OnInit {
   }
 
   goToLoginPage() {
-    this.router.navigate(['/slavesoverview']);
+    this.router.navigate(['/gateways']);
   }
 }
